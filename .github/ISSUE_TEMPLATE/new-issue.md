@@ -2,7 +2,7 @@
 name: New issue
 about: Issue for the platform team
 title: ''
-labels: ''
+labels: need-triage
 assignees: ''
 
 ---
