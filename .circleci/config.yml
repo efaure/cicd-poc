@@ -1,0 +1,35 @@
+version: 2.1
+
+jobs:
+  windows-info:
+    machine: true
+    resource_class: openbas-platform/openbas-agent-windows-64bits-arm
+    steps:
+      - run:
+          name: Print Windows System Info
+          command: |
+            echo Hostname: %COMPUTERNAME%
+            echo Number of CPUs: %NUMBER_OF_PROCESSORS%
+            echo Architecture: %PROCESSOR_ARCHITECTURE%
+            systeminfo | findstr /C:"Total Physical Memory"
+            systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+
+  macos-info:
+    machine: true
+    resource_class: openbas-platform/openbas-agent-macos-64bits-x86
+    steps:
+      - run:
+          name: Print macOS System Info
+          command: |
+            echo Hostname: $(hostname)
+            echo Number of CPUs: $(sysctl -n hw.ncpu)
+            echo Architecture: $(uname -m)
+            echo RAM: $(system_profiler SPHardwareDataType | grep "Memory")
+            echo OS Version: $(sw_vers -productVersion)
+
+workflows:
+  version: 2
+  sample-workflow:
+    jobs:
+      - windows-info
+      - macos-info
