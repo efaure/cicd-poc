@@ -6,5 +6,9 @@ steps:
   - name: Runner information
     image: alpine:3.19
     commands:
-      - echo $DRONE_STAGE_MACHINE
-      - echo DRONE_STAGE_MACHINE $DRONE_STAGE_MACHINE
+    - echo DRONE_STAGE_MACHINE: ${DRONE_STAGE_MACHINE}
+    - echo DRONE_STAGE_TYPE: ${DRONE_STAGE_TYPE}
+    - echo DRONE_BUILD_NUMBER: ${DRONE_BUILD_NUMBER}
+    - echo DRONE_BUILD_TRIGGER: ${DRONE_BUILD_TRIGGER}
+    - echo DRONE_SYSTEM_HOSTNAME: ${DRONE_SYSTEM_HOSTNAME}
+    - echo DRONE_SYSTEM_HOST: ${DRONE_SYSTEM_HOST}
