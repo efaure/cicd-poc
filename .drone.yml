@@ -6,4 +6,4 @@ steps:
   - name: Runner information
     image: alpine:3.19
     commands:
-      - echo "DRONE_STAGE_MACHINE: ${DRONE_STAGE_MACHINE}"
+      - echo DRONE_STAGE_MACHINE
